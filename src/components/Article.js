@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import CommentsList from "./CommentList";
 
 class Article extends PureComponent {
   toggleOpen = () => {
@@ -11,18 +12,15 @@ class Article extends PureComponent {
   }
 
   render() {
-    console.log("render Article");
-    const {
-      article: { title },
-      isOpen
-    } = this.props;
+    const { article, isOpen } = this.props;
     return (
       <div>
         <h3>
-          {title}
+          {article.title}
           <button onClick={this.toggleOpen}>{isOpen ? "close" : "open"}</button>
         </h3>
         {this.articleBody}
+        {isOpen ? <CommentsList comments={article.comments} /> : null}
       </div>
     );
   }
