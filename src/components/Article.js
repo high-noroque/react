@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class Article extends Component {
+class Article extends PureComponent {
   toggleOpen = () => {
-    this.props.toggleArticle();
+    this.props.toggleArticle(this.props.article.id);
   };
 
   get articleBody() {
@@ -11,6 +11,7 @@ class Article extends Component {
   }
 
   render() {
+    console.log("render Article");
     const {
       article: { title },
       isOpen
